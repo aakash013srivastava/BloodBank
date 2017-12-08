@@ -14,23 +14,28 @@
 	</head>
 	<body>
 		<div id="header">
-			<h3>Test PHP Website</h3>
+			<h3>BloodBank System</h3>
 		</div>
 		
 		<div id ="navigation">
 			<a href="index.php" class="navItem">Index</a>
 			<a href="index.php" class="navItem">About Us</a>
 			<a href="index.php" class="navItem">Contact Us</a>
-			<a href="index.php" class="navItem">Admin Panel</a>
+			<?php
+			 session_start();
+			 if (isset($_SESSION['type']) && $_SESSION['type']=='hospital') {
+			 ?>
+			<a href="admin.php" class="navItem">Add Blood Info</a>
+			 <?php }?>
 		</div>
 		
 		<div id="sidebar">
 			
 			<?php
-			 session_start();
+
 			 if (isset($_SESSION['type'])) {
 			 ?>
-			<center><h4>Logout</h4></center>
+			<center><h4><a href="logout.php">Logout</a></h4></center>
 			 <?php
 			
 			 } else {

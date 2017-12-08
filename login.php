@@ -22,6 +22,7 @@
 			
 			$login_sql = "SELECT * FROM users WHERE username='".$_POST['name']."'";
 			$pass =  mysqli_query($conn, $login_sql);
+			if($pass){
 			if(mysqli_num_rows($pass)>0){
 				while($row = mysqli_fetch_assoc($pass)){
 					//echo "Password:".$row['password'];
@@ -30,14 +31,18 @@
 						echo 'Logged in !!';
 						session_start();
 						$_SESSION['type'] = $row['type'];
-						echo $_SESSION['type'];
+						$_SESSION['username'] = $row['username'];
+						echo '<script>window.location.href = "index.php";</script>';
 					}
 					else{
 						echo 'Wrong Credentials !!';
-						?><a href="index.php">Home</a> <?php 
+						
 					}
 					
 				}
+			}
+		}else{
+				echo 'Username not registered!!!';
 			}
 			
 		}

@@ -39,7 +39,7 @@ if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) 
 	username VARCHAR(30) NOT NULL,
 	type VARCHAR(30) NOT NULL,
 	password varchar(50) NOT NULL,
-	bgroup VARCHAR(5),
+	bgroup VARCHAR(50),
 	reg_date VARCHAR(25)
 	)";
 
@@ -63,7 +63,7 @@ if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) 
 					
 				}
 			}else{
-					$user_insert_sql = "INSERT INTO users(username,type,password,bgroup,reg_date) values('".$_POST['name']."','hospital','".$_POST['password']."','".null."','".$date."')";
+					$user_insert_sql = "INSERT INTO users(username,type,password,bgroup,reg_date) values('".$_POST['name']."','hospital','".$_POST['password']."','','".$date."')";
 					if (mysqli_query($conn, $user_insert_sql)) {
 					echo "Username created successfully";
 					echo '<script>window.location.href = "index.php";</script>';

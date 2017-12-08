@@ -49,7 +49,7 @@
 			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 			username VARCHAR(30) NOT NULL,
 			type VARCHAR(30) NOT NULL,
-			bgroup VARCHAR(5),
+			bgroup VARCHAR(50),
 			reg_date TIMESTAMP
 			)";
 
