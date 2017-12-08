@@ -1,3 +1,5 @@
+
+
 <?php
 		$servername = "localhost";
 		$username = "root";
@@ -18,7 +20,7 @@
 		if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password'])) {
 			 
 			
-			$login_sql = "SELECT password FROM users WHERE username='".$_POST['name']."'";
+			$login_sql = "SELECT * FROM users WHERE username='".$_POST['name']."'";
 			$pass =  mysqli_query($conn, $login_sql);
 			if(mysqli_num_rows($pass)>0){
 				while($row = mysqli_fetch_assoc($pass)){
@@ -26,9 +28,13 @@
 				
 					if ($row['password'] == $_POST['password']) {
 						echo 'Logged in !!';
+						session_start();
+						$_SESSION['type'] = $row['type'];
+						echo $_SESSION['type'];
 					}
 					else{
 						echo 'Wrong Credentials !!';
+						?><a href="index.php">Home</a> <?php 
 					}
 					
 				}

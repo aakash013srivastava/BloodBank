@@ -6,6 +6,7 @@
 	</head>
 	<body>
 		<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+		<h2>Hospital Registration</h2>
 		Username:<input type="text" name="name" required/><br/><br/>
 		Password:<input type="password" name="password" required/><br/><br/>
 		<input type="Submit" value= "Submit">
@@ -58,18 +59,20 @@ if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) 
 					}
 					else{
 						echo 'Creating new username !!';
-
-						$user_insert_sql = "INSERT INTO users(username,type,password,bgroup,reg_date) values('".$_POST['name']."','hospital','".$_POST['password']."','".null."','".$date."')";
-						if (mysqli_query($conn, $user_insert_sql)) {
-							echo 'User inserted successfully';
-						}
-						else{
-							echo 'User not inserted !!';
-						}
 					}
 					
 				}
-			}
+			}else{
+					$user_insert_sql = "INSERT INTO users(username,type,password,bgroup,reg_date) values('".$_POST['name']."','hospital','".$_POST['password']."','".null."','".$date."')";
+					if (mysqli_query($conn, $user_insert_sql)) {
+					echo "Username created successfully";
+					echo '<script>window.location.href = "index.php";</script>';
+					?><a href="index.php">Home</a> <?php 
+					}
+					else{
+						echo 'Username not created !!';
+					}
+				}
 		
 		
 		

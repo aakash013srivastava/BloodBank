@@ -41,9 +41,9 @@
 				Password:<input type="password"name="password" required/>
 					<input type="Submit" value="Submit">
 			</form>
-				OR 
+				<center>OR</center>
 			<center><h4>REGISTER</h4></center>
-				<a href="register_hospital.php">Hospitals</a>/<a href="register_receiver.php">Receivers</a>
+				<center><a href="register_hospital.php">Hospitals</a>/<a href="register_receiver.php">Receivers</a></center>
 			
 			   <?php
 			 }
