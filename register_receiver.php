@@ -1,6 +1,3 @@
-<?php
-include("index.php");	
-?>
 
 <html>
 	<head>

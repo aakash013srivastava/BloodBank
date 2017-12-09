@@ -8,7 +8,7 @@ if(mysqli_num_rows($requester_bgroup_result)>0){
 					$requester_bg = $row['bgroup'];
 					$requestee_bgroups = explode(";",$_GET['s']);
 					if(!in_array($requester_bg,$requestee_bgroups)){
-						echo 'Your bloodgroup not present,request someone else!';
+						echo 'Your registered bloodgroup not present with this Hospital,request someone else!';
 					}else{
 						// Check if requests table exists,if not then create
 						
@@ -28,10 +28,11 @@ if(mysqli_num_rows($requester_bgroup_result)>0){
 						
 						$dt = date('Y-m-d H:i:s');
 						
-						$check_sql = "SELECT * FROM requests WHERE requested_username='".$_GET['q']."' and requesting_username='".$_GET['r']."'";
+						$check_sql = "SELECT * FROM requests WHERE requested_username='".$_GET['q']."' and requesting_username='".$_GET['r']."' AND status='pending'";
 						$check_sql_execute = mysqli_query($conn,$check_sql);
 						if(mysqli_num_rows($check_sql_execute)>0){
 							echo "Request already submitted !!!";
+							
 						}else{
 								
 							$sql = "INSERT INTO requests(requested_id,requested_username,requesting_username,status,reg_date) values('".$_GET['p']."','".$_GET['q']."','".$_GET['r']."','pending','".$dt."')";
