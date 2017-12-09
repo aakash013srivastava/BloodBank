@@ -1,3 +1,6 @@
+<?php
+include("index.php");	
+?>
 
 <html>
 	<head>
@@ -56,7 +59,7 @@
 							if (mysqli_query($conn, $user_insert_sql)) {
 							echo "Username created successfully ";
 							echo '<script>window.location.href = "index.php";</script>';
-							?><a href="index.php">Home</a> <?php 
+							
 						}
 						else{
 							echo 'Username not created !!';
@@ -73,7 +76,7 @@
 }
 else
 {
-	echo 'Fill form correctly!';
+	//echo 'Fill form correctly!';
 }
 ?>
 	</body>

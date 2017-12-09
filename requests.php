@@ -27,15 +27,24 @@ if(mysqli_num_rows($requester_bgroup_result)>0){
 						}else{
 						
 						$dt = date('Y-m-d H:i:s');
-						$sql = "INSERT INTO requests(requested_id,requested_username,requesting_username,status,reg_date) values('".$_GET['p']."','".$_GET['q']."','".$_GET['r']."','pending','".$dt."')";
-						echo $sql;
-						$request_insertion_result = mysqli_query($conn,$sql);
 						
-						if($request_insertion_result){
-							echo 'Request submitted successfully';
+						$check_sql = "SELECT * FROM requests WHERE requested_username='".$_GET['q']."' and requesting_username='".$_GET['r']."'";
+						$check_sql_execute = mysqli_query($conn,$check_sql);
+						if(mysqli_num_rows($check_sql_execute)>0){
+							echo "Request already submitted !!!";
 						}else{
-							echo 'Request not inserted,please Retry';
+								
+							$sql = "INSERT INTO requests(requested_id,requested_username,requesting_username,status,reg_date) values('".$_GET['p']."','".$_GET['q']."','".$_GET['r']."','pending','".$dt."')";
+							//echo $sql;
+							$request_insertion_result = mysqli_query($conn,$sql);
+							
+							if($request_insertion_result){
+								echo 'Request submitted successfully';
+							}else{
+								echo 'Request not inserted,please Retry';
+							}
 						}
+						
 								
 						}
 						

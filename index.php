@@ -19,8 +19,8 @@
 		
 		<div id ="navigation">
 			<a href="index.php" class="navItem">Index</a>
-			<a href="index.php" class="navItem">About Us</a>
-			<a href="index.php" class="navItem">Contact Us</a>
+			<a href="#" class="navItem">About Us</a>
+			<a href="#" class="navItem">Contact Us</a>
 			<?php
 			 session_start();
 			 if (isset($_SESSION['type']) && $_SESSION['type']=='hospital') {

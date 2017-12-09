@@ -1,4 +1,6 @@
-
+<?php
+include("index.php");
+?>
 
 <html>
 	<head>
@@ -16,6 +18,7 @@
 </html>
 
 <?php
+	
 	include("includes/database.php");
 	
 	if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password'])) {
@@ -70,6 +73,6 @@
 }
 else
 {
-	echo 'Fill form correctly!';
+	//echo 'Fill form correctly!';
 }
 ?>
