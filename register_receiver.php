@@ -24,23 +24,7 @@
 
 		
 <?php
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-
-		// Create connection
-		$conn = mysqli_connect($servername, $username, $password);
-
-		// Check connection
-		if (!$conn) {
-			die("Connection failed: " . mysqli_connect_error());
-		}
-		$dbselect = mysqli_select_db($conn,"bloodbank");
-		if (!$dbselect){
-			die('could not select database');
-			mysqli_query($conn, "CREATE DATABASE bloodbank");
-			mysqli_select_db($conn,"bloodbank");
-		}
+		include("includes/database.php");
 		
 		if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['bgroup']) && !empty($_POST['bgroup']) && isset($_POST['password']) && !empty($_POST['password'])) {
 		

@@ -16,32 +16,18 @@
 </html>
 
 <?php
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-
-		// Create connection
-		$conn = mysqli_connect($servername, $username, $password);
-
-		// Check connection
-		if (!$conn) {
-			die("Connection failed: " . mysqli_connect_error());
-		}
-		$dbselect = mysqli_select_db($conn,"bloodbank");
-		if (!$dbselect){
-			die('could not select database');
-		}
-
-if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password'])) {
+	include("includes/database.php");
 	
-		$sql = "CREATE TABLE IF NOT EXISTS users (
-	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-	username VARCHAR(30) NOT NULL,
-	type VARCHAR(30) NOT NULL,
-	password varchar(50) NOT NULL,
-	bgroup VARCHAR(50),
-	reg_date VARCHAR(25)
-	)";
+	if(isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password'])) {
+		
+			$sql = "CREATE TABLE IF NOT EXISTS users (
+		id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+		username VARCHAR(30) NOT NULL,
+		type VARCHAR(30) NOT NULL,
+		password varchar(50) NOT NULL,
+		bgroup VARCHAR(50),
+		reg_date VARCHAR(25)
+		)";
 
 	if (mysqli_query($conn, $sql)) {
 		//echo "Table Users created successfully";

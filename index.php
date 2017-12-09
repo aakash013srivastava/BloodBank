@@ -26,6 +26,7 @@
 			 if (isset($_SESSION['type']) && $_SESSION['type']=='hospital') {
 			 ?>
 			<a href="admin.php" class="navItem">Add Blood Info</a>
+			<a href="view_requests.php" class="navItem">View Requests</a>
 			 <?php }?>
 		</div>
 		
@@ -57,10 +58,34 @@
 			
 			
 		</div>
-		
+		<br/><br/>
 		<div id="page_content">
+			
+			
 			<form>
-				
+			
+			<table border="1">
+			<th>Id</th><th>Hospital Username</th><th>Bloodgroups available</th><th>Request</th>
+			<?php 
+			include("includes/database.php");
+			$sql = "SELECT * FROM users WHERE type = 'hospital'";
+			$result = mysqli_query($conn,$sql);
+			if(mysqli_num_rows($result)>0){
+				while($row = mysqli_fetch_assoc($result)){
+					
+					echo "<tr><td>".$row['id']."</td><td>".$row['username']."</td><td>".$row['bgroup']."</td>";
+					if(isset($_SESSION['type']) && $_SESSION['type']=='receiver'){
+					$link = "<a href=requests.php?p=".$row['id']."&q=".$row['username']."&r=".$_SESSION['username']."&s=".urlencode($row['bgroup']).">Request</a>";
+					echo "<td>".$link."</td></tr>";
+					}else{
+						echo "<td></td></tr>";
+					}
+					
+				}
+			}
+			
+			?>
+			</table>
 			</form>
 		</div>
 		
