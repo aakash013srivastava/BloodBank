@@ -18,7 +18,7 @@
 					  <option value="AB+">AB+</option>
 					  <option value="AB-">AB-</option>
 					</select><br/><br/>
-		Password:<input type="password" name="password" required/><br/><br/>
+		Password:<input type="password" name="password" required pattern=".{6,}" title="Please enter at least 6 characters"/><br/><br/>
 		<input type="Submit" value= "Submit">
 		</form>
 
@@ -48,7 +48,7 @@
 					//echo "Password:".$row['password'];
 				
 					if ($row['password']) {
-						echo 'Username Exists !!';
+						echo 'Username Already Exists,create a new One !!';
 					}
 				}
 			}else{

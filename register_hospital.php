@@ -7,7 +7,7 @@
 		<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 		<h2>Hospital Registration</h2>
 		Username:<input type="text" name="name" required/><br/><br/>
-		Password:<input type="password" name="password" required/><br/><br/>
+		Password:<input type="password" name="password" required pattern=".{6,}" title="Please enter at least 6 characters"/><br/><br/>
 		<input type="Submit" value= "Submit">
 		</form>
 
@@ -41,7 +41,7 @@
 					//echo "Password:".$row['password'];
 				
 					if ($row['password']) {
-						echo 'Username Exists !!';
+						echo 'Username Already Exists,create a new One !!';
 					}
 					else{
 						echo 'Creating new username !!';
